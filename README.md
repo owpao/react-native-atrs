@@ -3,9 +3,7 @@
 
 **Table of Contents**
 
-* Set UP
-    * SDK Manager Installation
-    * Environment Variable Configuration
+* Set Up
 * Running the mobile app 
     * via ADB (Android)
     * via QR Code (Android)
