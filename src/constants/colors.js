@@ -1,0 +1,1 @@
+//For constant color variables

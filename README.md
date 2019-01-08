@@ -13,7 +13,8 @@
 * Install [Yarn](https://nodejs.org/en/download/)(Optional, if you prefer npm)
 * Install [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) on your mobile phone (Android)
 * Clone the repository: ```https://gitlab.com/codebevy/react-native-atrs.git```
-* run ```yarn``` or ```npm install``` on your project directory
+* Open command prompt to the root of your project directory
+* Run ```yarn``` or ```npm install```
 
 ## Running the mobile app
 
