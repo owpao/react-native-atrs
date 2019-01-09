@@ -1,7 +1,7 @@
 import { StyleSheet, Image } from 'react-native';
 import {Constants} from 'expo';
 
-export const styles = StyleSheet.create({
+export const Styles = StyleSheet.create({
     bg: {
         flex: 1,
         width:null,

@@ -1,13 +1,5 @@
 import React from 'react';
 import HomeScreen from 'components/home';
-import { StyleSheet, View } from 'react-native';
-
-const styles = StyleSheet.create({
-    statusBar: {
-        backgroundColor: "#212121",
-        height: Expo.Constants.statusBarHeight,
-    }
-});
 
 export default class App extends React.Component {
     constructor() {
