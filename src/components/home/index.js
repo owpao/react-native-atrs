@@ -6,7 +6,7 @@ import {
 
 import Sidebar from 'components/sidebar';
 import {Styles} from 'constants/styles';
-
+import MapView from 'components/map';
 
 export default class Home extends Component {
     closeDrawer = () => {
@@ -38,8 +38,7 @@ export default class Home extends Component {
                         </Body>
                         <Right/>
                     </Header>
-
-
+                    <MapView/>
                 </Container>
             </Drawer>
         );
