@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {
-    Text, Image, ImageBackground
-} from 'react-native';
+import { Image, ImageBackground } from 'react-native';
 
-import {Content, List, ListItem } from 'native-base';
-const routes = ["Home", "Chat", "Profile"];
+import {Content, List, ListItem, Icon, Left, Body, Button, Text}
+from 'native-base';
+
 
 export default class Sidebar extends Component {
     render() {
@@ -22,24 +21,46 @@ export default class Sidebar extends Component {
                     }}>
                     <Image
                         square
-                        style={{ height: 80, width: 70 }}
+                        style={{height: 80, width: 70}}
                         source={{
                             uri: "https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/master/assets/logo.png"
                         }}
                     />
                 </ImageBackground>
-                <List
-                    dataArray={routes}
-                    renderRow={data => {
-                        return (
-                            <ListItem
-                                button
-                                onPress={() => this.props.navigation.navigate(data)}>
-                                <Text>{data}</Text>
-                            </ListItem>
-                        );
-                    }}
-                />
+                <List>
+                    <ListItem icon button onPress={()=>alert('Home')}>
+                        <Left>
+                            <Icon name="home" type="MaterialCommunityIcons"/>
+                        </Left>
+                        <Body>
+                        <Text>Home</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem icon button onPress={()=>alert('My Profile')}>
+                        <Left>
+                            <Icon name="profile" type="AntDesign"/>
+                        </Left>
+                        <Body>
+                        <Text>My Profile</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem icon button onPress={()=>alert('History')}>
+                        <Left>
+                            <Icon name="history" type="MaterialCommunityIcons"/>
+                        </Left>
+                        <Body>
+                        <Text>History</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem icon button onPress={()=>alert('Log Out')}>
+                        <Left>
+                            <Icon name="log-out" type="Feather"/>
+                        </Left>
+                        <Body>
+                        <Text>Log Out</Text>
+                        </Body>
+                    </ListItem>
+                </List>
             </Content>
         );
     }
