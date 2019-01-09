@@ -4,18 +4,11 @@ import {
     Container, Header, Left, Button, Icon, Right, Body, Title, Drawer
 } from 'native-base';
 
-import {StyleSheet, View} from 'react-native';
-import {Constants} from 'expo';
 import Sidebar from 'components/sidebar';
+import {Styles} from 'constants/styles';
 
-const styles = StyleSheet.create({
-    statusBar: {
-        backgroundColor: "#212121",
-        height: Constants.statusBarHeight,
-    },
-});
 
-export default class Style extends Component {
+export default class Home extends Component {
     closeDrawer = () => {
         this.drawer._root.close()
     };
@@ -26,15 +19,17 @@ export default class Style extends Component {
     render() {
         return (
             <Drawer
-                ref={(ref) => { this.drawer = ref; }}
+                ref={(ref) => {
+                    this.drawer = ref;
+                }}
                 content={<Sidebar/>}
-                onClose={() => this.closeDrawer()} >
+                onClose={() => this.closeDrawer()}>
 
                 <Container>
-                    <Header style={styles.statusBar}/>
+                    <Header style={Styles.statusBar}/>
                     <Header style={{backgroundColor: "#212121"}}>
                         <Left>
-                            <Button transparent onPress={ () => this.openDrawer()}>
+                            <Button transparent onPress={() => this.openDrawer()}>
                                 <Icon name='menu'/>
                             </Button>
                         </Left>
@@ -43,10 +38,12 @@ export default class Style extends Component {
                         </Body>
                         <Right/>
                     </Header>
+
+
                 </Container>
             </Drawer>
         );
     }
 }
 
-module.exports = Style;
+module.exports = Home;
