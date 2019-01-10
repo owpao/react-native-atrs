@@ -10,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/cab.png",
+    "icon": "./assets/icon.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
