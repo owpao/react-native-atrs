@@ -2,16 +2,16 @@ import { StyleSheet } from 'react-native';
 import { Constants } from 'expo';
 
 export default StyleSheet.create({
-    container: {
+    loginContainer: {
         paddingTop: Constants.statusBarHeight
     },
-    view:
+    loginView:
     {
         paddingTop: '40%',
         height: Constants.screenHeight,
         alignItems: 'center'
     },
-    form:
+    loginForm:
     {
         marginTop: '10%',
         marginBottom: '15%',
@@ -20,14 +20,16 @@ export default StyleSheet.create({
         width: '75%',
         height: 125
     },
-    grid:{ 
-        width: '75%', 
-        justifyContent: 'space-around', 
-        alignItems: 'center' 
+    loginGrid: {
+        width: '75%',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
-    copyright:{ 
-        marginTop: '40%', 
-        fontSize: 9, 
-        alignItems: 'baseline' 
-    }
+    loginCopyright: {
+        marginTop: '40%',
+        fontSize: 9,
+        alignItems: 'baseline'
+    },
+    loginSignup: { marginTop: '5%', color: '#212121' },
+    loginSignin: { marginHorizontal: 5, backgroundColor: '#212121' }
 })

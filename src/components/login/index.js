@@ -5,16 +5,17 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from 'components/home';
 import Style from './styles';
+import styles from './styles';
 
 class Login extends Component {
   render() {
     return (
-      <Container style={Style.container}>
+      <Container style={Style.loginContainer}>
         <Content>
-          <View style={Style.view}>
+          <View style={Style.loginView}>
             <Image style={{ width: 200, height: 100 }} source={require('assets/logo.png')} resizeMode="contain" />
 
-            <Form style={Style.form}>
+            <Form style={Style.loginForm}>
               <Item rounded >
                 <Icon name='user' type='AntDesign' />
                 <Input placeholder='Username' />
@@ -25,10 +26,10 @@ class Login extends Component {
                 <Input placeholder='Password' secureTextEntry />
               </Item>
             </Form>
-            <Grid style={Style.grid}>
+            <Grid style={Style.loginGrid}>
               <Row>
                 <Col>
-                  <Button block rounded style={{ marginHorizontal: 5, backgroundColor: '#212121' }} onPress={() => this.props.navigation.navigate('Home')}>
+                  <Button block rounded style={Style.loginSignin} onPress={() => this.props.navigation.navigate('Home')}>
                     <Text> Login </Text>
                   </Button>
                 </Col>
@@ -36,13 +37,13 @@ class Login extends Component {
               <Row>
                 <Col>
                   <Button block transparent onPress={() => console.log('signUp!')} >
-                    <Text style={{ marginTop: '5%', color: '#212121' }}>Don't have an account? Sign up now!</Text>
+                    <Text style={Style.loginSignup}>Don't have an account? Sign up now!</Text>
                   </Button>
                 </Col>
               </Row>
             </Grid>
 
-            <Text style={Style.copyright}>CodeBevy 2019</Text>
+            <Text style={Style.loginCopyright}>CodeBevy 2019</Text>
           </View>
         </Content>
       </Container>
