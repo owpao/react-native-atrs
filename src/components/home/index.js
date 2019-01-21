@@ -7,7 +7,6 @@ import {
 import Sidebar from 'components/sidebar';
 import { Styles } from 'constants/styles';
 import MapView from 'components/map';
-import { Modal } from 'react-native';
 
 export default class Home extends Component {
     closeDrawer = () => {
@@ -39,25 +38,6 @@ export default class Home extends Component {
                         </Body>
                         <Right />
                     </Header>
-
-                    <View style={{ alignContent: "center", justifyContent: "space-evenly", alignItems: "center", height: 100 }}>
-                        <Item style={{ height: '50%', paddingHorizontal:10, backgroundColor:'#f5f6fa' }}>
-                            <Icon style={{ color: '#e84118' }} name='place' type='MaterialIcons' />
-                            <Input
-                                placeholder='Pick-up point'
-                                label='pickup'
-                            />
-                        </Item>
-
-                        <Item style={{ height: '50%', paddingHorizontal:10, backgroundColor:'#f5f6fa' }}>
-                            <Icon style={{ color: '#4cd137' }} name='place' type='MaterialIcons' />
-                            <Input
-                                placeholder='Destination'
-                                label='destination'
-                            />
-                        </Item>
-                    </View>
-
                     <MapView />
                 </Container>
             </Drawer>
