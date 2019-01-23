@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Image, ImageBackground } from 'react-native';
-
+import {withNavigation} from 'react-navigation';
 import {Content, List, ListItem, Icon, Left, Body, Text}
 from 'native-base';
 
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
     render() {
         return (
             <Content style={{backgroundColor: '#FFFFFF'}}>
@@ -52,7 +52,7 @@ export default class Sidebar extends Component {
                         <Text>History</Text>
                         </Body>
                     </ListItem>
-                    <ListItem icon button onPress={()=>alert('Log Out')}>
+                    <ListItem icon button onPress={()=> this.props.navigation.navigate('Login')}>
                         <Left>
                             <Icon name="log-out" type="Feather"/>
                         </Left>
@@ -65,5 +65,4 @@ export default class Sidebar extends Component {
         );
     }
 }
-
-module.exports = Sidebar;
+export default withNavigation(Sidebar);

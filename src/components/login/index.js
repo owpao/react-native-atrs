@@ -10,10 +10,10 @@ state = { username: 'admin', password: 'admin', loading: false };
 
 
   onSignin = () => {
-    if (this.state.username == 'admin' && this.state.password =='admin') {
+    if (this.state.username === 'admin' && this.state.password ==='admin') {
       this.props.navigation.navigate('Home');
     } else {
-      alert('Authentication Failed','Invalid Username or Password!')
+      alert('Invalid Username or Password!')
     }
 
   };
