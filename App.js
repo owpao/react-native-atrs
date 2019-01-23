@@ -1,5 +1,11 @@
 import React from 'react';
-import HomeScreen from 'components/home';
+import Login from 'components/login';
+import Geocoder from 'react-native-geocoding';
+import {Provider} from 'react-redux';
+import reducers from 'reducers';
+import { createStore } from 'redux';
+
+const store = createStore(reducers);
 
 export default class App extends React.Component {
     constructor() {
@@ -19,12 +25,16 @@ export default class App extends React.Component {
     }
 
     render() {
+        Geocoder.init("AIzaSyBcOOWW6RjIGK3uNutKxgiA0TUn4KVsWuA");
         if (!this.state.isReady) {
             return <Expo.AppLoading />;
         }
-
+        
         return (
-            <HomeScreen/>
+            <Provider store = {store}>
+                <Login/>
+            </Provider>
+            
         );
     }
 }

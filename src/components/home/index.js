@@ -9,6 +9,14 @@ import { Styles } from 'constants/styles';
 import MapView from 'components/map';
 
 export default class Home extends Component {
+
+    state = {
+        route : {
+            origin:"",
+            destination:""
+        }
+    };
+
     closeDrawer = () => {
         this.drawer._root.close()
     };
@@ -38,6 +46,26 @@ export default class Home extends Component {
                         </Body>
                         <Right />
                     </Header>
+                    
+                    <View style={{ alignContent: "center", justifyContent: "space-evenly", alignItems: "center", height: 100 }}>
+                    <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                        <Icon style={{ color: '#e84118' }} name='place' type='MaterialIcons' />
+                        <Input
+                            placeholder='Pick-up point'
+                            label='pickup'
+                            value = {this.state.route.origin}
+                        />
+                    </Item>
+
+                    <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                        <Icon style={{ color: '#4cd137' }} name='place' type='MaterialIcons' />
+                        <Input
+                            placeholder='Destination'
+                            label='destination'
+                            value = {this.state.route.destination}
+                        />
+                    </Item>
+                </View>
                     <MapView />
                 </Container>
             </Drawer>
