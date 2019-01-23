@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { Item, Input, Form, Container, Content, View, Text, Button, Icon } from 'native-base';
 import { Image } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Home from 'components/home';
+
 import Style from './styles';
 
-
 class Login extends Component {
-state = { username: 'owpao', password: 'owpao', loading: false };
+state = { username: 'admin', password: 'admin', loading: false };
+
 
   onSignin = () => {
-    if (this.state.username == 'owpao' && this.state.password == 'owpao') {
+    if (this.state.username == 'admin' && this.state.password =='admin') {
       this.props.navigation.navigate('Home');
     } else {
-      console.log("error");
+      alert('Authentication Failed','Invalid Username or Password!')
     }
 
   };
@@ -27,7 +26,6 @@ state = { username: 'owpao', password: 'owpao', loading: false };
         <Content>
           <View style={Style.loginView}>
             <Image style={{ width: 200, height: 100 }} source={require('assets/logo.png')} resizeMode="contain" />
-
             <Form style={Style.loginForm}>
               <Item rounded >
                 <Icon name='user' type='AntDesign' />
@@ -75,13 +73,4 @@ state = { username: 'owpao', password: 'owpao', loading: false };
   }
 }
 
-const AppNavigator = createStackNavigator({
-  Home: { screen: Home },
-  Login: { screen: Login }
-},
-  {
-    initialRouteName: 'Login',
-    defaultNavigationOptions: { header: null }
-  });
-export default createAppContainer(AppNavigator);
-
+module.exports = Login;

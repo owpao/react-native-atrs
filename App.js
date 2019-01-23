@@ -1,10 +1,12 @@
 import React from 'react';
-import Login from 'components/login';
 import Geocoder from 'react-native-geocoding';
 import {Provider} from 'react-redux';
 import reducers from 'reducers';
 import { createStore } from 'redux';
+import Route from 'route';
+import {createAppContainer} from "react-navigation";
 
+const AppContainer = createAppContainer(Route);
 const store = createStore(reducers);
 
 export default class App extends React.Component {
@@ -32,7 +34,7 @@ export default class App extends React.Component {
         
         return (
             <Provider store = {store}>
-                <Login/>
+                <AppContainer/>
             </Provider>
             
         );
