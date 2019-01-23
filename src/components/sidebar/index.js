@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Image, ImageBackground } from 'react-native';
 
-import {Content, List, ListItem, Icon, Left, Body, Button, Text}
+import {Content, List, ListItem, Icon, Left, Body, Text}
 from 'native-base';
 
 

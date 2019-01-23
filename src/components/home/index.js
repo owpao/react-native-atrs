@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    Container, Header, Left, Button, Icon, Right, Body, Title, Drawer, Input, Item, InputGroup, Grid, Row, Col, Card, CardItem, Text, View
+    Container, Header, Left, Button, Icon, Right, Body, Title, Drawer, Input, Item, View
 } from 'native-base';
 
 import Sidebar from 'components/sidebar';

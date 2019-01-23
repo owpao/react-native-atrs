@@ -23,7 +23,7 @@ class App extends React.Component {
     }
 
     onRegionChangeComplete() {
-        region = this.state.region;
+        let region = this.state.region;
         this.props.getOriginAddress(region);
 
     }

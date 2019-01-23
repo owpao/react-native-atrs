@@ -2,9 +2,8 @@
 import Geocoder from 'react-native-geocoding';
 export function getOriginAddress(region) {
     try {
-       result = Geocoder.from(region.latitude, region.longitude);
-       return result;
+        return Geocoder.from(region.latitude, region.longitude);
     }catch(error){
         console.error(error);
     }
-};
+}
