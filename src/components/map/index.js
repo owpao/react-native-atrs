@@ -1,29 +1,20 @@
 import React from 'react';
 import { MapView } from 'expo';
 import { Container } from 'native-base';
-import { Marker } from 'react-native-maps';
 import { connect } from 'react-redux';
+import { getOriginAddressValue } from '../../constants/actions';
 
-class App extends React.Component {
-
-    state = {
-        region: {
-            latitude: 14.5248595,
-            longitude: 121.0001437,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-        }
-    }
+class Map extends React.Component {
 
     componentDidMount() {
     }
 
     onRegionChange(region) {
-        this.setState({ region });
+        console.log("region:",region)
     }
 
     onRegionChangeComplete() {
-        let region = this.state.region;
+        let region = this.props.region;
         this.props.getOriginAddress(region);
 
     }
@@ -33,18 +24,18 @@ class App extends React.Component {
             <Container>
                 <MapView
                     style={{ flex: 1 }}
-                    initialRegion={this.state.region}
+                    initialRegion={this.props.region}
                     showsUserLocation={true}
                     followUserLocation={true}
                     zoomEnabled={true}
                     onRegionChange={this.onRegionChange.bind(this)}
                     onRegionChangeComplete={this.onRegionChangeComplete.bind(this)}
                 >
-                    <Marker
+                    {/* <Marker
                         coordinate={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }}
                         title="Sample"
                         description="Sample Description"
-                    />
+                    /> */}
 
                 </MapView>
             </Container>
@@ -55,22 +46,18 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state.home.title);
     return {
-        region: state.region
+        region: state.home.region
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getOriginAddress: (region) => {
-            // getOriginAddress(region);
-            dispatch({
-                type:'change_pickup', region:region
-            })
-        }
+        getOriginAddress: (region) => { dispatch(getOriginAddressValue(region)); }
     }
 }
 
 export default connect(
     mapStateToProps, mapDispatchToProps
-)(App);
+)(Map);

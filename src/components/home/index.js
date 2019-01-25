@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 
 import {
-    Container, Header, Left, Button, Icon, Right, Body, Title, Drawer, Input, Item, View
+    Container, Header, Left, Button, Icon, Right, Body, Title, Drawer, Input, Item, View, Text
 } from 'native-base';
 
 import Sidebar from 'components/sidebar';
 import { Styles } from 'constants/styles';
 import MapView from 'components/map';
-
-export default class Home extends Component {
-
-    state = {
-        route : {
-            origin:"",
-            destination:""
-        }
-    };
+import { connect } from 'react-redux';
+import { changeOriginValue } from 'constants/actions'
+class Home extends Component {
 
     closeDrawer = () => {
         this.drawer._root.close()
@@ -23,6 +17,10 @@ export default class Home extends Component {
     openDrawer = () => {
         this.drawer._root.open()
     };
+
+    onPressTest = () => {
+        console.log(this.props.route);
+    }
 
     render() {
         return (
@@ -46,31 +44,48 @@ export default class Home extends Component {
                         </Body>
                         <Right />
                     </Header>
-                    
-                    <View style={{ alignContent: "center", justifyContent: "space-evenly", alignItems: "center", height: 100 }}>
-                    <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
-                        <Icon style={{ color: '#e84118' }} name='place' type='MaterialIcons' />
-                        <Input
-                            placeholder='Pick-up point'
-                            label='pickup'
-                            value = {this.state.route.origin}
-                        />
-                    </Item>
 
-                    <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
-                        <Icon style={{ color: '#4cd137' }} name='place' type='MaterialIcons' />
-                        <Input
-                            placeholder='Destination'
-                            label='destination'
-                            value = {this.state.route.destination}
-                        />
-                    </Item>
-                </View>
+                    <View style={{ alignContent: "center", justifyContent: "space-evenly", alignItems: "center", height: 100 }}>
+                        <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                            <Icon style={{ color: '#e84118' }} name='place' type='MaterialIcons' />
+                            <Input
+                                placeholder='Pick-up point'
+                                label='pickup'
+                                onChangeText={this.props.onChangeOriginText}
+                                value = {this.props.route.origin}
+                            />
+                        </Item>
+
+                        <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                            <Icon style={{ color: '#4cd137' }} name='place' type='MaterialIcons' />
+                            <Input
+                                placeholder='Destination'
+                                label='destination'
+                            />
+                        </Item>
+
+
+                    </View>
                     <MapView />
+                    {/* <Button block onPress = {this.onPressTest.bind(this)} >
+                            <Text>test</Text>
+                            </Button> */}
                 </Container>
             </Drawer>
         );
     }
 }
 
-module.exports = Home;
+const mapDispatchToProps = dispatch => {
+    return {
+        onChangeOriginText: (text) => { dispatch(changeOriginValue(text)) }
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        route: state.home.route
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

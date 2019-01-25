@@ -2,12 +2,13 @@ import React from 'react';
 import Geocoder from 'react-native-geocoding';
 import {Provider} from 'react-redux';
 import reducers from 'reducers';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import Route from 'route';
 import {createAppContainer} from "react-navigation";
+import thunk from "redux-thunk";
 
 const AppContainer = createAppContainer(Route);
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 
 export default class App extends React.Component {
     constructor() {

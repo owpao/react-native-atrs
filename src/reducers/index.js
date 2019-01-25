@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import home from './home';
+import map from '../components/map/mapReducer';
+import home from '../components/home/homeReducer'
 const allReducers = combineReducers({
+    map: map,
     home: home
 });
 
