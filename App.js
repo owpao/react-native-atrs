@@ -1,11 +1,11 @@
 import React from 'react';
 import Geocoder from 'react-native-geocoding';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import reducers from 'reducers';
-import { createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Route from 'route';
-import {createAppContainer} from "react-navigation";
+import { createAppContainer } from "react-navigation";
 import thunk from "redux-thunk";
 
 const AppContainer = createAppContainer(Route);
@@ -25,7 +25,7 @@ export default class App extends React.Component {
             Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
             Ionicons: require("native-base/Fonts/Ionicons.ttf")
         });
-        this.setState({isReady: true});
+        this.setState({ isReady: true });
     }
 
     render() {
@@ -33,12 +33,12 @@ export default class App extends React.Component {
         if (!this.state.isReady) {
             return <Expo.AppLoading />;
         }
-        
+
         return (
-            <Provider store = {store}>
-                <AppContainer/>
+            <Provider store={store}>
+                <AppContainer />
             </Provider>
-            
+
         );
     }
 }

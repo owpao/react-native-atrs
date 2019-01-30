@@ -6,11 +6,11 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import Style from './styles';
 
 class Login extends Component {
-state = { username: 'admin', password: 'admin', loading: false };
+  state = { username: 'admin', password: 'admin', loading: false };
 
 
   onSignin = () => {
-    if (this.state.username === 'admin' && this.state.password ==='admin') {
+    if (this.state.username === 'admin' && this.state.password === 'admin') {
       this.props.navigation.navigate('Home');
     } else {
       alert('Invalid Username or Password!')
@@ -18,7 +18,7 @@ state = { username: 'admin', password: 'admin', loading: false };
 
   };
 
-  
+
 
   render() {
     return (
@@ -51,7 +51,7 @@ state = { username: 'admin', password: 'admin', loading: false };
             <Grid style={Style.loginGrid}>
               <Row>
                 <Col>
-                  <Button block rounded style={Style.loginSignin} onPress = {this.onSignin.bind(this)}>
+                  <Button block rounded style={Style.loginSignin} onPress={this.onSignin.bind(this)}>
                     <Text> Login </Text>
                   </Button>
                 </Col>

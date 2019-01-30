@@ -11,20 +11,16 @@ const initialState = {
         longitude: 121.0001437,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-    },title:"ATRS",
+    }, title: "ATRS",
     isFetching: false
 }
 
 export default (state = initialState, action) => {
     if (action.type === CHANGE_ORIGIN_VALUE) {
-        console.log("pasok", action.text);
         return { ...state, route: { origin: action.text } }
-        // Object.assign({}, state, { route: { origin: action.text } })
-        // console.log(state);
-        // return state;
     }
-    else if(action.type === UPDATE_REGION){
-        return {...state, region: action.region}
+    else if (action.type === UPDATE_REGION) {
+        return { ...state, region: action.region }
     }
     else return state;
 }

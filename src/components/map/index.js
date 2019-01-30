@@ -23,7 +23,6 @@ class Map extends React.Component {
     }
 
     onRegionChangeComplete() {
-        console.log("component region: ",this.state.region);
         this.props.updateRegion(this.state.region);
         this.props.getOriginAddress(this.state.region);
     }
@@ -55,7 +54,6 @@ class Map extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.home.title);
     return {
         region: state.home.region
     }
@@ -64,7 +62,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getOriginAddress: (region) => { dispatch(getOriginAddressValue(region)); },
-        updateRegion: (region) => {dispatch(updateRegion(region));}
+        updateRegion: (region) => { dispatch(updateRegion(region)); }
     }
 }
 
