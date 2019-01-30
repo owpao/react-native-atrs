@@ -2,7 +2,7 @@ import React from 'react';
 import { MapView } from 'expo';
 import { Container } from 'native-base';
 import { connect } from 'react-redux';
-import { getOriginAddressValue } from '../../constants/actions';
+import { getOriginAddressValue, updateRegion } from '../../constants/actions';
 
 class Map extends React.Component {
 
@@ -10,7 +10,7 @@ class Map extends React.Component {
     }
 
     onRegionChange(region) {
-        console.log("region:",region)
+        this.props.updateRegion(region);
     }
 
     onRegionChangeComplete() {
@@ -54,7 +54,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getOriginAddress: (region) => { dispatch(getOriginAddressValue(region)); }
+        getOriginAddress: (region) => { dispatch(getOriginAddressValue(region)); },
+        updateRegion: (region) => {dispatch(updateRegion(region));}
     }
 }
 

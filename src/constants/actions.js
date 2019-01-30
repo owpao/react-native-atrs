@@ -16,3 +16,10 @@ export const getOriginAddressValue = (region) => dispatch => {
         .catch(error => { console.error(error); });
 }
 
+export const updateRegion = (region) => {
+    return {
+        type: "UPDATE_REGION",
+        region
+    }
+}
+

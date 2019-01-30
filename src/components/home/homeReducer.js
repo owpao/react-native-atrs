@@ -1,5 +1,5 @@
 
-import { CHANGE_ORIGIN_VALUE } from '../map/mapActions';
+import { CHANGE_ORIGIN_VALUE, UPDATE_REGION } from '../map/mapActions';
 
 const initialState = {
     route: {
@@ -22,6 +22,9 @@ export default (state = initialState, action) => {
         // Object.assign({}, state, { route: { origin: action.text } })
         // console.log(state);
         // return state;
+    }
+    else if(action.type === UPDATE_REGION){
+        return {...state, region: action.region}
     }
     else return state;
 }
