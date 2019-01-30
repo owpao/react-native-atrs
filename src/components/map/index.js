@@ -6,17 +6,26 @@ import { getOriginAddressValue, updateRegion } from '../../constants/actions';
 
 class Map extends React.Component {
 
+    state = {
+        region: {
+            latitude: 14.5248595,
+            longitude: 121.0001437,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+        }
+    }
+
     componentDidMount() {
     }
 
     onRegionChange(region) {
-        this.props.updateRegion(region);
+        this.state.region = region;
     }
 
     onRegionChangeComplete() {
-        let region = this.props.region;
-        this.props.getOriginAddress(region);
-
+        console.log("component region: ",this.state.region);
+        this.props.updateRegion(this.state.region);
+        this.props.getOriginAddress(this.state.region);
     }
 
     render() {
