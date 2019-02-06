@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Image} from 'react-native';
 import {
     Container, Header, Left, Button, Icon, Right, Body, Title, Drawer, Input, Item, View, Text
 } from 'native-base';
@@ -34,29 +34,30 @@ class Home extends Component {
                 <Container>
                     <Header style={Styles.statusBar} />
                     <Header style={{ backgroundColor: "#212121" }}>
-                        <Left>
+                        <Left style={{ flex: 1 }}>
                             <Button transparent onPress={() => this.openDrawer()}>
                                 <Icon name='menu' />
                             </Button>
                         </Left>
-                        <Body>
-                            <Title>ATRS</Title>
+                        <Body style={{ flex: 3, alignContent: 'center' }}>
+                            <Image style={{ alignSelf:'center', width: 200, height: 35 }} source={require('assets/logo-header.png')} resizeMode="contain" />
                         </Body>
-                        <Right />
+                        <Right style={{ flex: 1 }} />
                     </Header>
 
-                    <View style={{ alignContent: "center", justifyContent: "space-evenly", alignItems: "center", height: 100 }}>
-                        <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                    <MapView />
+                    <View style={{ position: 'absolute', justifyContent: 'center', alignSelf: 'center', alignItems: "center", height: 80, width: '90%', top: 150 }}>
+                        <Item rounded style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa', marginVertical: 5 }}>
                             <Icon style={{ color: '#e84118' }} name='place' type='MaterialIcons' />
                             <Input
                                 placeholder='Pick-up point'
                                 label='pickup'
                                 onChangeText={this.props.onChangeOriginText}
-                                value = {this.props.route.origin}
+                                value={this.props.route.origin}
                             />
                         </Item>
 
-                        <Item style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                        <Item rounded style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
                             <Icon style={{ color: '#4cd137' }} name='place' type='MaterialIcons' />
                             <Input
                                 placeholder='Destination'
@@ -64,13 +65,14 @@ class Home extends Component {
                             />
                         </Item>
 
-
                     </View>
-                    <MapView />
-                    {/* <Button block onPress = {this.onPressTest.bind(this)} >
-                            <Text>test</Text>
-                            </Button> */}
+
+
                 </Container>
+
+                <Button rounded style={{ position: 'absolute', flex: 1, alignSelf: 'center', bottom: 50 }}>
+                    <Text>Set Pick up address</Text>
+                </Button>
             </Drawer>
         );
     }
