@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapView } from 'expo';
+import MapView, { Marker } from 'react-native-maps';
 import { Container } from 'native-base';
 import { connect } from 'react-redux';
 import { getOriginAddressValue, updateRegion } from '../../constants/actions';
@@ -15,11 +15,15 @@ class Map extends React.Component {
         }
     }
 
+    // getInitialState(){
+    //     return this.state.region;
+    // }
+
     componentDidMount() {
     }
 
     onRegionChange(region) {
-        this.state.region = region;
+        this.setState({region});
     }
 
     onRegionChangeComplete() {
@@ -39,11 +43,11 @@ class Map extends React.Component {
                     onRegionChange={this.onRegionChange.bind(this)}
                     onRegionChangeComplete={this.onRegionChangeComplete.bind(this)}
                 >
-                    {/* <Marker
+                    <Marker
                         coordinate={{ latitude: this.state.region.latitude, longitude: this.state.region.longitude }}
                         title="Sample"
                         description="Sample Description"
-                    /> */}
+                    />
 
                 </MapView>
             </Container>

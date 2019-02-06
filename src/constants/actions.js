@@ -10,7 +10,7 @@ export const changeOriginValue = (text) => {
 export const getOriginAddressValue = (region) => dispatch => {
     getOriginAddressByRegion(region)
         .then(json => {
-            let longNameAddress = json.results[0].address_components[0].long_name;
+            let longNameAddress = json.results[0].formatted_address;
             dispatch(changeOriginValue(longNameAddress));
         })
         .catch(error => { console.error(error); });
