@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import {Image} from 'react-native';
+import { Image } from 'react-native';
 import {
     Container, Header, Left, Button, Icon, Right, Body, Title, Drawer, Input, Item, View, Text
 } from 'native-base';
 
 import Sidebar from 'components/sidebar';
-import { Styles } from 'constants/styles';
+import { Styles as styles } from './homeStyles';
 import MapView from 'components/map';
 import { connect } from 'react-redux';
 import { changeOriginValue } from 'constants/actions'
+import { changeDestinationValue, originLocationDone } from '../../constants/actions';
 class Home extends Component {
 
     closeDrawer = () => {
@@ -17,10 +18,6 @@ class Home extends Component {
     openDrawer = () => {
         this.drawer._root.open()
     };
-
-    onPressTest = () => {
-        console.log(this.props.route);
-    }
 
     render() {
         return (
@@ -32,7 +29,7 @@ class Home extends Component {
                 onClose={() => this.closeDrawer()}>
 
                 <Container>
-                    <Header style={Styles.statusBar} />
+                    <Header style={styles.statusBar} />
                     <Header style={{ backgroundColor: "#212121" }}>
                         <Left style={{ flex: 1 }}>
                             <Button transparent onPress={() => this.openDrawer()}>
@@ -40,14 +37,14 @@ class Home extends Component {
                             </Button>
                         </Left>
                         <Body style={{ flex: 3, alignContent: 'center' }}>
-                            <Image style={{ alignSelf:'center', width: 200, height: 35 }} source={require('assets/logo-header.png')} resizeMode="contain" />
+                            <Image style={styles.headerImage} source={require('assets/logo-header.png')} resizeMode="contain" />
                         </Body>
                         <Right style={{ flex: 1 }} />
                     </Header>
 
                     <MapView />
-                    <View style={{ position: 'absolute', justifyContent: 'center', alignSelf: 'center', alignItems: "center", height: 80, width: '90%', top: 150 }}>
-                        <Item rounded style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa', marginVertical: 5 }}>
+                    <View style={styles.view}>
+                        <Item rounded style={styles.roundedTextBox}>
                             <Icon style={{ color: '#e84118' }} name='place' type='MaterialIcons' />
                             <Input
                                 placeholder='Pick-up point'
@@ -57,11 +54,13 @@ class Home extends Component {
                             />
                         </Item>
 
-                        <Item rounded style={{ height: '50%', paddingHorizontal: 10, backgroundColor: '#f5f6fa' }}>
+                        <Item rounded style={styles.roundedTextBox}>
                             <Icon style={{ color: '#4cd137' }} name='place' type='MaterialIcons' />
                             <Input
                                 placeholder='Destination'
                                 label='destination'
+                                onChangeText={this.props.onChangeDestinationText}
+                                value={this.props.route.destination}
                             />
                         </Item>
 
@@ -70,7 +69,9 @@ class Home extends Component {
 
                 </Container>
 
-                <Button rounded style={{ position: 'absolute', flex: 1, alignSelf: 'center', bottom: 50 }}>
+                <Button rounded style={styles.button}
+                    onPress={this.props.onPressSetPickUpAddress}
+                >
                     <Text>Set Pick up address</Text>
                 </Button>
             </Drawer>
@@ -80,7 +81,12 @@ class Home extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onChangeOriginText: (text) => { dispatch(changeOriginValue(text)) }
+        onChangeOriginText: (text) => {
+            dispatch(originLocationDone(false));
+            dispatch(changeOriginValue(text))
+        },
+        onChangeDestinationText: (text) => { dispatch(changeDestinationValue(text)) },
+        onPressSetPickUpAddress: () => { dispatch(originLocationDone(true)) }
     }
 }
 

@@ -12,9 +12,5 @@ export const Styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    statusBar: {
-        backgroundColor: "#212121",
-        height: Constants.statusBarHeight,
-    },
+    }
 });

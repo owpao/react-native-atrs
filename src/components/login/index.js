@@ -3,7 +3,7 @@ import { Item, Input, Form, Container, Content, View, Text, Button, Icon } from 
 import { Image } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
-import Style from './styles';
+import Style from './loginStyles';
 
 class Login extends Component {
   state = { username: 'admin', password: 'admin', loading: false };
